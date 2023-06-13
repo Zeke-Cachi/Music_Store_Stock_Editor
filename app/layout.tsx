@@ -1,5 +1,6 @@
 import './globals.css'
 import { Montserrat } from 'next/font/google'
+import { ProductProvider } from './contexts/productContext'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -8,17 +9,18 @@ export const metadata = {
   description: 'Generic Music Store stock management system',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout( {children}: {children: React.ReactNode}) {
+  
   return (
     <html lang="en">
       <body 
         className={montserrat.className}
         suppressHydrationWarning={true}
-      >{children}</body>
+      >
+        <ProductProvider>
+          {children}
+        </ProductProvider>
+      </body>
     </html>
   )
 }

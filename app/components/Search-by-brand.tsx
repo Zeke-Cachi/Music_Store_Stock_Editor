@@ -1,58 +1,55 @@
 'use client'
-import { useState, useContext } from "react";
-import axios from "axios";
+import { useState, useContext } from "react"
 import { ProductContext } from "../contexts/productContext";
 import EditProducts from "./Edit-products";
 import toast, { Toaster } from 'react-hot-toast';
 
-const SearchByStock = () => {
+export const SearchByBrand = () => {
 
-  //*****************  USESTATES *********************//
-  
-  const [stockSearch, setStockSearch] = useState(0);
+  const [storeBrand, setStoreBrand] = useState("")
   const [showResults, setShowResults] = useState(false);
 
-  //*****************  CONTEXT *********************//
   const {
     products,
+    setProducts,
     isEditActive,
     handleIsEditActive,
     handleSearch
     } = useContext(ProductContext);
-
-//*****************  FUNCTION *********************//
-
-
-  //*****************  RETURN *********************//
   
+
+    
+
+
   return (
-    <main className="relative grid place-items-center h-[100%]">
-
-      <form 
-        className="flex flex-row-reverse justify-around w-[100%]"
-        onSubmit={ (e) => {handleSearch(e)} }>
-        <input 
-          type="number"
-          className="input w-[3.5rem] h-[3rem] mx-auto bg-gray-100 text-gray-900 text-center"
-          onChange= {(e:React.ChangeEvent<HTMLInputElement>) => {setStockSearch(Number( e.target.value) )} }
-          />
-
-        <button
-          type="submit"
-          onClick={ () => {setShowResults(!showResults)} }
-          className="btn bg-primary border-none btn-md mb-[1rem] text-gray-900 w-[12rem] mx-auto">
-          {!showResults ? "Search by stock" : "Hide results"}
-        </button>
+    <main className="px-[1.4rem]">
+      <form className="flex flex-row-reverse justify-between">
+        
+        <select
+          className="w-[100%] bg-primary text-gray-900 select mb-[.5rem] font-normal text-[1rem] focus:border-[2px] focus:border-primary text-center]"
+          onChange={ (e) => {setStoreBrand(e.target.value), handleSearch(e), setShowResults(true)}}
+        >
+          <option defaultValue="">Sort by brand</option>
+          <option value="Gibson">Gibson</option>
+          <option value="Fender">Fender</option>
+          <option value="Jackson">Jackson</option>
+          <option value="Romantica">Romantica</option>
+          <option value="Yamaha">Yamaha</option>
+          <option value="King">King</option>
+          <option value="Tama">Tama</option>
+          <option value="Sonor">Sonor</option>
+          <option onClick={ () => {setShowResults(false)} }>Clear Search</option>
+        </select>
       </form>
 
       {showResults && (
       
-      <div className="grid grid-cols-1 gap-[2rem]">
+      <div className="grid grid-cols-1 place-items-center gap-[2rem]">
         {products.map((product: any, i) => (
         <div
           key={i}
-          className={`${product.stock === stockSearch ? "block" : "hidden"} border-[2px] border-primary 
-          rounded-md p-[.4rem] text-gray-100 mb-[1rem] grid`}
+          className={`${product.brand === storeBrand ? "block" : "hidden"} border-[2px] border-primary 
+          rounded-md p-[.4rem] text-gray-100 mb-[1rem] grid w-[12rem]`}
         >
           <div>
             <p>
@@ -97,14 +94,9 @@ const SearchByStock = () => {
       </div>)}
 
       <Toaster />
+      
+
     </main>
   )
 }
-
-export default SearchByStock
-
-
-
-
-
 
