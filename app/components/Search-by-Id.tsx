@@ -1,38 +1,64 @@
+'use client'
 import React from 'react'
+import { useState, useContext, useRef } from 'react'
+import { ProductContext } from "../contexts/productContext";
+import EditProducts from "./Edit-products";
 
 export const SearchById = () => {
   
+//*****************  CONTEXT *********************//
+  const {
+    products,
+    isEditActive,
+    handleIsEditActive,
+    } = useContext(ProductContext);
+
+//*****************  STATES *********************//
+  const [storeId, setStoreId] = useState(0)
+  const [showResults, setShowResults] = useState(false)
+  const idRef = useRef<HTMLInputElement>(null!);
   
-  
-  
-  
-  
+//*****************  FUNCTION *********************//
+  const checkNoCoincidences = (e:any) => {
+    e.preventDefault();
+    idRef.current.value = ""
+  }
+
+//*****************  RETURN *********************//
   return (
     <main className="relative grid place-items-center h-[100%]">
     <form 
       className="flex flex-row-reverse justify-around w-[100%]"
-      onSubmit={handleSearchStock}>
+      onSubmit={ (e:any) => {checkNoCoincidences(e)} }>
       <input 
         type="number"
+        ref={idRef}
         className="input w-[3.5rem] h-[3rem] mx-auto bg-gray-100 text-gray-900 text-center"
-        onChange= {(e:React.ChangeEvent<HTMLInputElement>) => {setStockSearch(Number( e.target.value) )} }
+        onChange= {(e:React.ChangeEvent<HTMLInputElement>) => {setStoreId(Number( e.target.value) )} }
         />
 
       <button
         type="submit"
         className="btn bg-primary border-none btn-md mb-[1rem] text-gray-900 w-[12rem] mx-auto"
-        onClick={ () => {setShowResults(!showResults)} }>
-        {!showResults ? "Search by stock" : "Hide results"}
+        onClick={ () => {setShowResults(true)} }>
+          Search by Id
       </button>
     </form>
 
     {showResults && (
     
     <div className="grid grid-cols-1 gap-[2rem]">
+
+      <button
+        onClick={ () => {setShowResults(false), setStoreId(0)} }
+        className="btn bg-primary border-none btn-md mb-[1rem] text-gray-900 w-[12rem] mx-auto">
+          Hide Results
+      </button>
+
       {products.map((product: any, i) => (
       <div
         key={i}
-        className={`${product.stock === stockSearch ? "block" : "hidden"} border-[2px] border-primary 
+        className={`${ i === storeId ? "block" : "hidden"} border-[2px] border-primary 
         rounded-md p-[.4rem] text-gray-100 mb-[1rem] grid`}
       >
         <div>
@@ -64,7 +90,6 @@ export const SearchById = () => {
             </button>
           </div>
          
-
         </div>
 
         {isEditActive === i && (
@@ -72,14 +97,18 @@ export const SearchById = () => {
           i={i as number}
         />
       )}
-      </div>))}
 
+      </div>
+
+      ))}
+
+      {storeId > products.length || storeId < 0 ? 
+      <div className='text-primary text-[1.5rem] mb-[2rem]'>No items found</div> :
+      null}
 
     </div>)}
 
-    <Toaster />
   </main>
-)
   )
 }
 

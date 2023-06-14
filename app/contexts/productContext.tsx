@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, createContext } from "react";
 import axios from "axios";
+import toast, { Toaster } from 'react-hot-toast';
 
 //*****************  DECLARING INTERFACES *********************//
 
@@ -15,8 +16,7 @@ interface ProductContextValue {
   setIsEditActive: (isEditActive: any) => void;
   editProduct: any;
   setEditProduct: (editProduct: any) => void;
-  handleIsEditActive: Function,
-  handleSearch: Function
+  handleIsEditActive: Function
 }
 
 const ProductContext = createContext<ProductContextValue>({} as ProductContextValue);
@@ -72,22 +72,25 @@ const ProductProvider = ( {children}: { children: React.ReactNode } ) => {
     };
   }, [isEditActive]);
 
+  useEffect( () => {
+    const dataFetch = async () => {
+      try {
+        const result: any = await axios.get(`https://musicstorecrudserver-production.up.railway.app/api/list/`);
+        setProducts(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    dataFetch();
+  },[])
+
+//*****************  FUNCTION *********************//
   const handleIsEditActive = (i:any) => {
     setIsEditActive(i);
   };
   
-
-  const handleSearch = async (e:any) => {
-    e.preventDefault();
-    try {
-      const result:any = await axios.get(`https://musicstorecrudserver-production.up.railway.app/api/list/`);
-      setProducts(result.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
 //*****************  RETURN *********************//
-
   return (
     <ProductContext.Provider
       value={{
@@ -101,10 +104,10 @@ const ProductProvider = ( {children}: { children: React.ReactNode } ) => {
       setIsEditActive,
       editProduct,
       setEditProduct,
-      handleIsEditActive,
-      handleSearch
+      handleIsEditActive
       }}
     >{ children }</ProductContext.Provider>
+    
   )
 }
 

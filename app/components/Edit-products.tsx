@@ -80,7 +80,7 @@ const EditProducts = ({i}: {i:number}) => {
         className="select mb-[.5rem] text-gray-400 font-normal text-[1rem] focus:border-[2px] focus:border-primary text-center"
         onChange={(e) => setEditProduct((prevData:editProductValue) => ({...prevData, brand: e.target.value }) )}
       >
-        <option disabled selected>choose Brand</option>
+        <option defaultValue="">choose Brand</option>
         {editProduct.type === "stringed" ? (
           <>
             <option value="Gibson">Gibson</option>

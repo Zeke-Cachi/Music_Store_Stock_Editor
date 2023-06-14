@@ -2,32 +2,28 @@
 import { useState, useContext } from "react"
 import { ProductContext } from "../contexts/productContext";
 import EditProducts from "./Edit-products";
-import toast, { Toaster } from 'react-hot-toast';
 
 export const SearchByBrand = () => {
 
+//*****************  CONTEXT *********************//
+  const {
+    products,
+    isEditActive,
+    handleIsEditActive
+    } = useContext(ProductContext);
+
+//*****************  STATES *********************//
   const [storeBrand, setStoreBrand] = useState("")
   const [showResults, setShowResults] = useState(false);
 
-  const {
-    products,
-    setProducts,
-    isEditActive,
-    handleIsEditActive,
-    handleSearch
-    } = useContext(ProductContext);
-  
-
-    
-
-
+//*****************  RETURN *********************//
   return (
     <main className="px-[1.4rem]">
       <form className="flex flex-row-reverse justify-between">
         
         <select
           className="w-[100%] bg-primary text-gray-900 select mb-[.5rem] font-normal text-[1rem] focus:border-[2px] focus:border-primary text-center]"
-          onChange={ (e) => {setStoreBrand(e.target.value), handleSearch(e), setShowResults(true)}}
+          onChange={ (e) => {setStoreBrand(e.target.value), e.preventDefault(), setShowResults(true)}}
         >
           <option defaultValue="">Sort by brand</option>
           <option value="Gibson">Gibson</option>
@@ -80,21 +76,13 @@ export const SearchByBrand = () => {
               </button>
             </div>
            
-
           </div>
 
-          {isEditActive === i && (
-          <EditProducts 
-            i={i as number}
-          />
-        )}
+          {isEditActive === i && (<EditProducts i={i as number}/>)}
+          
         </div>))}
 
-
       </div>)}
-
-      <Toaster />
-      
 
     </main>
   )

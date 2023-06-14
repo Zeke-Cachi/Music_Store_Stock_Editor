@@ -1,6 +1,7 @@
 import { Header } from "../components/Header"
 import SearchByStock from "../components/Search-by-stock"
 import { SearchByBrand } from "../components/Search-by-brand"
+import { SearchById } from "../components/Search-by-Id"
 
 const advancedSearch = () => {
   return (
@@ -12,10 +13,11 @@ const advancedSearch = () => {
 
         <SearchByStock />
 
+        <SearchById />
+
         <SearchByBrand />
 
-        
-        </main>
+      </main>
     </>
   )
 }
