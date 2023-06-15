@@ -2,7 +2,7 @@
 import { useState, useContext, useRef, useEffect } from "react";
 import { ProductContext } from "../contexts/productContext";
 import EditProducts from "./Edit-products";
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 const SearchByStock = () => {
 
@@ -39,12 +39,12 @@ const checkNoCoincidences = (e:any) => {
     <main className="relative grid place-items-center h-[100%]">
 
       <form 
-        className="flex flex-row-reverse justify-around w-[100%]"
+        className="flex flex-row-reverse justify-center w-[100%] sm:w-[70%] md:w-[60%] lg:w-[40%] 2xl:w-[30%]"
         onSubmit={ (e:any) => {checkNoCoincidences(e)} }>
         <input 
           type="number"
           ref={inputRef}
-          className="input w-[3.5rem] h-[3rem] mx-auto bg-gray-100 text-gray-900 text-center"
+          className="input w-[5rem] h-[3rem] mx-auto bg-gray-100 text-gray-900 text-center"
           onChange= {(e:React.ChangeEvent<HTMLInputElement>) => { setStockSearch(Number( e.target.value)) }}
           />
 
@@ -57,70 +57,72 @@ const checkNoCoincidences = (e:any) => {
       </form>
 
       {showResults && (
-      <div className="grid grid-cols-1 gap-[2rem]">
-
+      
+      <>
         <button
           onClick={ () => {setShowResults(false), setStockSearch(0)} }
           className="btn bg-primary border-none btn-md mb-[1rem] text-gray-900 w-[12rem] mx-auto">
             Hide Results
         </button>
+        
+        <div className="animate-show flex justify-around basis-[100%] flex-wrap">
+          {products.map((product: any, i) => (
+          <div
+            key={i}
+            className={`${product.stock === stockSearch ? "block" : "hidden"} border-[2px] border-primary 
+            rounded-md p-[.4rem] text-gray-100 m-[1rem] grid relative w-[15rem]`}
+          >
+            <div className="z-20">
+              <p>
+                <span className="font-bold">ID:</span> {i}
+              </p>
+              <p>
+                <span className="font-bold">Name:</span> {product.name}
+              </p>
+              <p>
+                <span className="font-bold">Type:</span> {product.type}
+              </p>
+              <p>
+                <span className="font-bold">Color:</span> {product.color}
+              </p>
+              <p className={`${product.stock === 0 ? "text-red-500 font-bold" : null}`}>
+                <span className="font-bold text-gray-100">Stock:</span>{" "}
+                {product.stock}
+              </p>
+              <p>
+                <span className="font-bold">Brand:</span> {product.brand}
+              </p>
 
-        {products.map((product: any, i) => (
-        <div
-          key={i}
-          className={`${product.stock === stockSearch ? "block" : "hidden"} border-[2px] border-primary 
-          rounded-md p-[.4rem] text-gray-100 mb-[1rem] grid relative`}
-        >
-          <div className="z-20">
-            <p>
-              <span className="font-bold">ID:</span> {i}
-            </p>
-            <p>
-              <span className="font-bold">Name:</span> {product.name}
-            </p>
-            <p>
-              <span className="font-bold">Type:</span> {product.type}
-            </p>
-            <p>
-              <span className="font-bold">Color:</span> {product.color}
-            </p>
-            <p className={`${product.stock === 0 ? "text-red-500 font-bold" : null}`}>
-              <span className="font-bold text-gray-100">Stock:</span>{" "}
-              {product.stock}
-            </p>
-            <p>
-              <span className="font-bold">Brand:</span> {product.brand}
-            </p>
+              <div className="w-[100%] grid place-items-center">
+                <button
+                  className="mx-auto btn bg-primary border-none my-[.5rem] text-gray-900"
+                  onClick={ () => {handleIsEditActive(i)} }>
+                  Edit
+                </button>
+              </div>
+            
 
-            <div className="w-[100%] grid place-items-center">
-              <button
-                className="mx-auto btn bg-primary border-none my-[.5rem] text-gray-900"
-                onClick={ () => {handleIsEditActive(i)} }>
-                Edit
-              </button>
             </div>
-           
+    
+
+            {isEditActive === i && (
+            <EditProducts 
+              i={i as number}
+            />
+          )}
 
           </div>
-  
 
-          {isEditActive === i && (
-          <EditProducts 
-            i={i as number}
-          />
+          ))}
+
+          {noItemsFound && showResults && (
+          <div className="text-center text-primary text-[1.5rem] mb-[2rem]">
+            No items found.
+          </div>
         )}
 
         </div>
-
-        ))}
-
-        {noItemsFound && showResults && (
-        <div className="text-center text-primary text-[1.5rem] mb-[2rem]">
-          No items found.
-        </div>
-      )}
-
-      </div>)}
+      </>)}
 
       <Toaster />
     </main>

@@ -21,7 +21,7 @@ export const CreateProducts = () => {
       await axios.post("https://musicstorecrudserver-production.up.railway.app/api/create", addProduct)
       .then(response => { console.log(`item added: ${response.data}`)})
 
-      toast.success('Item Added!')
+      toast.success('Item Added! Refresh page to see changes')
 
       setAddProduct({
         name: "",
@@ -55,7 +55,7 @@ export const CreateProducts = () => {
       {showForm && 
       <form 
         onSubmit={handleAddProduct}
-        className="flex flex-col justify-center mt-[1rem]">
+        className="animate-show flex flex-col justify-center mt-[1rem]">
 
         <input 
           type="text" 
@@ -69,7 +69,7 @@ export const CreateProducts = () => {
           className="select mb-[.5rem] text-gray-400 font-normal text-[1rem] focus:border-[2px] focus:border-primary"
           id="type"
           onChange={ (e) => setAddProduct( (prevData) => ({...prevData, type: e.target.value}) )}>
-          <option disabled selected>Instrument type</option>
+          <option defaultValue="">Instrument type</option>
           <option value="stringed">stringed</option>
           <option value="wind">wind</option>
           <option value="percussion">percussion</option>

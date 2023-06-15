@@ -28,7 +28,7 @@ export const SearchById = () => {
   return (
     <main className="relative grid place-items-center h-[100%]">
     <form 
-      className="flex flex-row-reverse justify-around w-[100%]"
+      className="flex flex-row-reverse justify-center w-[100%] sm:w-[70%] md:w-[60%] lg:w-[40%] 2xl:w-[30%]"
       onSubmit={ (e:any) => {checkNoCoincidences(e)} }>
       <input 
         type="number"
@@ -47,7 +47,7 @@ export const SearchById = () => {
 
     {showResults && (
     
-    <div className="grid grid-cols-1 gap-[2rem]">
+    <div className="animate-show grid grid-cols-1 gap-[2rem]">
 
       <button
         onClick={ () => {setShowResults(false), setStoreId(0)} }

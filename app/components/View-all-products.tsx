@@ -32,7 +32,6 @@ export const ViewAll = () => {
   const handleProducts = async () => {
     if (isDataVisible) {
       setIsDataVisible(false);
-      setProducts([]);
     } else {
       const response = await axios.get("https://musicstorecrudserver-production.up.railway.app/api/list");
       const allProducts = response.data;
@@ -52,11 +51,11 @@ export const ViewAll = () => {
       </button>
 
       {isDataVisible && (
-      <div className="grid grid-cols-1 gap-[2rem]">
+      <div className="flex justify-around basis-[100%] flex-wrap">
         {products.map((product: any, i) => (
         <div
           key={i}
-          className="border-[2px] border-primary rounded-md p-[.4rem] text-gray-100 mb-[1rem] grid"
+          className="animate-show border-[2px] border-primary rounded-md p-[.4rem] text-gray-100 m-[1rem] grid w-[15rem]"
         >
         {isEditActive !== i && (
           <>
@@ -100,7 +99,7 @@ export const ViewAll = () => {
 
       {scrollTop &&
       <FaArrowUp 
-        className="text-primary h-[2rem] w-[2rem] fixed bottom-[2rem] right-[2rem] cursor-pointer"
+        className="text-primary h-[2rem] w-[2rem] fixed bottom-[10rem] right-[2rem] cursor-pointer"
         onClick={scrollBack}
         />}
 

@@ -38,7 +38,7 @@ const EditProducts = ({i}: {i:number}) => {
   return (
     <form
       onSubmit={ (e) => {{handleEditProduct(e, i)}} }
-      className="flex flex-col justify-center mt-[1rem]"
+      className="animate-show flex flex-col justify-center mt-[1rem]"
     >
       <input
         type="text"

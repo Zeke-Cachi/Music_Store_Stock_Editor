@@ -22,7 +22,7 @@ export const SearchByBrand = () => {
       <form className="flex flex-row-reverse justify-between">
         
         <select
-          className="w-[100%] bg-primary text-gray-900 select mb-[.5rem] font-normal text-[1rem] focus:border-[2px] focus:border-primary text-center]"
+          className="w-[12rem] mx-auto bg-primary text-gray-900 select mb-[1rem] font-normal text-[1rem] focus:border-[2px] focus:border-primary text-center]"
           onChange={ (e) => {setStoreBrand(e.target.value), e.preventDefault(), setShowResults(true)}}
         >
           <option defaultValue="">Sort by brand</option>
@@ -40,7 +40,7 @@ export const SearchByBrand = () => {
 
       {showResults && (
       
-      <div className="grid grid-cols-1 place-items-center gap-[2rem]">
+      <div className="animate-show flex justify-around basis-[100%] flex-wrap">
         {products.map((product: any, i) => (
         <div
           key={i}
