@@ -1,5 +1,5 @@
 
-## Jake Music Store Stock Editor
+## Fake Music Store Stock Editor
 
 ## FullStack WebApp
 
