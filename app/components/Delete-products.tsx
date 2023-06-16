@@ -79,7 +79,7 @@ export const DeleteProducts = () => {
         <div className="text-center alert bg-primary w-[18rem] sm:w-[22rem] md:w-[24rem] absolute top-[50%] left-[50%] translate-y-[-100%] 
         translate-x-[-50%] border-[2px] border-gray-100 flex flex-col">
           <GoAlert className="text-gray-900"/>
-          <span>Are you sure you want to delete this item?</span>
+          <span className='text-gray-900'>Are you sure you want to delete this item?</span>
           
           <div className='flex justify-around w-[100%]'>
             <button 

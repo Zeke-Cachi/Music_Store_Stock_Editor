@@ -33,7 +33,7 @@ export const SearchById = () => {
       <input 
         type="number"
         ref={idRef}
-        className="input w-[3.5rem] h-[3rem] mx-auto bg-gray-100 text-gray-900 text-center"
+        className="input w-[5rem] h-[3rem] mx-auto bg-gray-100 text-gray-900 text-center"
         onChange= {(e:React.ChangeEvent<HTMLInputElement>) => {setStoreId(Number( e.target.value) )} }
         />
 
