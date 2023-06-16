@@ -13,3 +13,9 @@ menus were made using DaisyUI).
 ## Observations
 
 There were a couple of routes from the server that I ended up not using (like search by ID), since i created a simple ID system in the frontend, so it doesn´t display the mongoDB-created Id. 
+
+## Live Sites
+
+https://music-store-stock-editor.vercel.app/
+
+https://musicstorecrudserver-production.up.railway.app (server)
