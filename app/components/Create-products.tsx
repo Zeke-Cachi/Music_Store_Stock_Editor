@@ -62,11 +62,11 @@ export const CreateProducts = () => {
           id="name"
           value={addProduct.name}
           placeholder="enter instrument name"
-          className="input mb-[.5rem] focus:border-[2px] focus:border-primary"
+          className="input mb-[.5rem] focus:border-[2px] focus:border-primary bg-gray-100"
           onChange={ (e) => setAddProduct( (prevData) => ({...prevData, name: e.target.value}) )} />
 
         <select 
-          className="select mb-[.5rem] text-gray-400 font-normal text-[1rem] focus:border-[2px] focus:border-primary"
+          className="select mb-[.5rem] text-gray-400 font-normal text-[1rem] focus:border-[2px] focus:border-primary bg-gray-100"
           id="type"
           onChange={ (e) => setAddProduct( (prevData) => ({...prevData, type: e.target.value}) )}>
           <option defaultValue="">Instrument type</option>
@@ -80,7 +80,7 @@ export const CreateProducts = () => {
           id="color"
           value={addProduct.color}
           placeholder="enter instrument color"
-          className="input mb-[.5rem] focus:border-[2px] focus:border-primary"
+          className="input mb-[.5rem] focus:border-[2px] focus:border-primary bg-gray-100"
           onChange={ (e) => setAddProduct( (prevData) => ({...prevData, color: e.target.value}) )} />
 
         <input 
@@ -88,12 +88,12 @@ export const CreateProducts = () => {
           id="stock"
           value={addProduct.stock}
           placeholder="enter stock"
-          className="input mb-[.5rem] text-gray-400 text-center focus:border-[2px] focus:border-primary"
+          className="input mb-[.5rem] text-gray-400 text-center focus:border-[2px] focus:border-primary bg-gray-100"
           onChange={ (e:any) => setAddProduct( (prevData) => ({...prevData, stock: e.target.value}) )} />
 
         <select 
           id="brand"
-          className="select mb-[.5rem] text-gray-400 font-normal text-[1rem] focus:border-[2px] focus:border-primary"
+          className="select mb-[.5rem] text-gray-400 font-normal text-[1rem] focus:border-[2px] focus:border-primary bg-gray-100"
           onChange={ (e) => setAddProduct( (prevData) => ({...prevData, brand: e.target.value}) )} >
             <option disabled selected>choose Brand</option>
             {addProduct.type === "stringed" ? 

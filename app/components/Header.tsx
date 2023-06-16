@@ -7,7 +7,7 @@ export const Header = () => {
   const pathname = usePathname()
 
   return (
-    <header className="bg-gray-900 h-[6rem] border-[1px] border-gray-100 flex items-center ps-[1rem]">
+    <header className="bg-gray-900 h-[6rem] border-b border-gray-100 flex items-center ps-[1rem]">
       
     <div 
       className="btn btn-square btn-ghost">
@@ -29,8 +29,8 @@ export const Header = () => {
       <ul tabIndex={0} className="dropdown-content shadow bg-primary rounded-md w-[11rem] h-[2.5rem] grid place-items-center">
         <li>
           {pathname !== '/advanced-search' ? 
-          <Link href="/advanced-search">Advanced Search</Link> :
-          <Link href="/">Create, edit or delete</Link>}
+          <Link href="/advanced-search" className="text-gray-900">Advanced Search</Link> :
+          <Link href="/" className="text-gray-900">Create, edit or delete</Link>}
         </li>
       </ul>
 

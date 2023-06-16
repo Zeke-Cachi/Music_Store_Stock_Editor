@@ -55,7 +55,7 @@ export const ViewAll = () => {
         {products.map((product: any, i) => (
         <div
           key={i}
-          className="animate-show border-[2px] border-primary rounded-md p-[.4rem] text-gray-100 m-[1rem] grid w-[15rem]"
+          className="animate-show border-[2px] border-primary rounded-md p-[.4rem] text-gray-100 m-[1rem] grid min-w-[15rem]"
         >
         {isEditActive !== i && (
           <>

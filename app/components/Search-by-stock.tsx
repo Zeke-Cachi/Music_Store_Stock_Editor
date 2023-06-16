@@ -70,7 +70,7 @@ const checkNoCoincidences = (e:any) => {
           <div
             key={i}
             className={`${product.stock === stockSearch ? "block" : "hidden"} border-[2px] border-primary 
-            rounded-md p-[.4rem] text-gray-100 m-[1rem] grid relative w-[15rem]`}
+            rounded-md p-[.4rem] text-gray-100 m-[1rem] grid relative min-w-[15rem]`}
           >
             <div className="z-20">
               <p>
