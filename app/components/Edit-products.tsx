@@ -44,12 +44,12 @@ const EditProducts = ({i}: {i:number}) => {
         type="text"
         id="name"
         placeholder="enter instrument name"
-        className="input mb-[.5rem] focus:border-[2px] focus:border-primary text-gray-400 text-center"
+        className="input mb-[.5rem] focus:border-[2px] focus:border-primary text-gray-400 text-center bg-gray-100"
         onChange={(e) => setEditProduct((prevData:editProductValue) => ({...prevData, name: e.target.value }) )}
       />
 
       <select
-        className="select mb-[.5rem] text-gray-400 font-normal text-[1rem] focus:border-[2px] focus:border-primary text-center"
+        className="select mb-[.5rem] text-gray-400 font-normal text-[1rem] focus:border-[2px] focus:border-primary text-center bg-gray-100"
         id="type"
         onChange={(e) => setEditProduct((prevData:editProductValue) => ({...prevData, type: e.target.value }) )}
       >
@@ -63,7 +63,7 @@ const EditProducts = ({i}: {i:number}) => {
         type="text"
         id="color"
         placeholder="enter color"
-        className="input mb-[.5rem] focus:border-[2px] focus:border-primary text-gray-400 text-center"
+        className="input mb-[.5rem] focus:border-[2px] focus:border-primary text-gray-400 text-center bg-gray-100"
         onChange={(e) => setEditProduct((prevData:editProductValue) => ({...prevData, color: e.target.value }) )}
       />
 
@@ -71,13 +71,13 @@ const EditProducts = ({i}: {i:number}) => {
         type="number"
         id="stock"
         placeholder="enter stock"
-        className="input mb-[.5rem] text-gray-400 text-center focus:border-[2px] focus:border-primary"
+        className="input mb-[.5rem] text-gray-400 text-center focus:border-[2px] focus:border-primary bg-gray-100"
         onChange={(e: any) => setEditProduct((prevData:editProductValue) => ({ ...prevData, stock: e.target.value }) )}
       />
 
       <select
         id="brand"
-        className="select mb-[.5rem] text-gray-400 font-normal text-[1rem] focus:border-[2px] focus:border-primary text-center"
+        className="select mb-[.5rem] text-gray-400 font-normal text-[1rem] focus:border-[2px] focus:border-primary text-center bg-gray-100"
         onChange={(e) => setEditProduct((prevData:editProductValue) => ({...prevData, brand: e.target.value }) )}
       >
         <option defaultValue="">choose Brand</option>
