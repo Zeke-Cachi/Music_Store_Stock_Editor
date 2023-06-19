@@ -1,34 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Fake Music Store Stock Editor
 
-First, run the development server:
+## FullStack WebApp
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+This site allows you to connect to a CRUD server (also made by me) and see or modify the items in the database.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+For this project, I used MongoDB as the main database. For the backend I used Node.js with Express. Finally, for the frontend I used Next.js, along with Tailwind, although most of the visual components like buttons or
+menus were made using DaisyUI).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Observations
 
-## Learn More
+There were a couple of routes from the server that I ended up not using (like search by ID), since i created a simple ID system in the frontend, so it doesn´t display the mongoDB-created Id. 
 
-To learn more about Next.js, take a look at the following resources:
+## Live Sites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+https://music-store-stock-editor.vercel.app/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+https://musicstorecrudserver-production.up.railway.app (server)
