@@ -45,7 +45,7 @@ export const SearchByBrand = () => {
         <div
           key={i}
           className={`${product.brand === storeBrand ? "block" : "hidden"} border-[2px] border-primary 
-          rounded-md p-[.4rem] text-gray-100 mb-[1rem] grid w-[12rem]`}
+          rounded-md p-[.4rem] text-gray-100 mb-[1rem] grid min-w-[12rem]`}
         >
           <div>
             <p>
